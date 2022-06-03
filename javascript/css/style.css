@@ -161,3 +161,21 @@ header {
 #ob-target.anime-i {
   transform: rotate(1000deg);
 }
+#add-todo {
+  position: relative;
+  z-index: 5;
+  background-color: rgb(201, 23, 85);
+  width: 400px;
+  margin: 50px auto;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+}
+#add-todo li {
+  background-color: coral;
+  border-radius: 9999px;
+  text-align: center;
+}
+#add-todo #todos-ul {
+  list-style-type: none;
+}
