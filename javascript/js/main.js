@@ -101,8 +101,33 @@ const Observer = () => {
   const observer = new IntersectionObserver(callback, options)
   observer.observe(target)
 }
+const Todos = () => {
+  const todosUl = document.getElementById('todos-ul')
+  const todoButton = document.getElementById('todo-button')
+  const todoInput = document.getElementById('todo-input')
+  const removeTodo = (li) => {
+    todosUl.removeChild(li)
+  }
+  const addTodo = (todo) => {
+    const li = document.createElement('li')
+    li.textContent = String(todo)
+    const button = document.createElement('button')
+    button.textContent = '削除'
+    button.addEventListener('click', () => {
+      removeTodo(li)
+    })
+    li.appendChild(button)
+    todosUl.appendChild(li)
+  }
+  todoButton.addEventListener('click', () => {
+    const todo = todoInput.value
+    addTodo(todo)
+    todoInput.value = ''
+  })
+}
 Modal()
 Hamburger()
 StopWatch()
 getApi()
 Observer()
+
