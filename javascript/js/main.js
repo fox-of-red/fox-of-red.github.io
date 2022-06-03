@@ -57,7 +57,7 @@ const getApi = () => {
   const usersUl = document.getElementById('users-ul')
   const showUsers = (users) => {
     users.forEach(user => {
-      console.log(user)
+      // console.log(user)
       const name = user.name
       const username = user.username
       const email = user.email
@@ -130,4 +130,4 @@ Hamburger()
 StopWatch()
 getApi()
 Observer()
-
+Todos()
