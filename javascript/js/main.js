@@ -80,8 +80,8 @@ const Observer = () => {
   const target = document.getElementById('ob-target')
   const callback = (entries, observer) => {
     entries.forEach(entry=>{
-      console.log(entry.isIntersecting)
-      console.log(entry.target)
+      // console.log(entry.isIntersecting)
+      // console.log(entry.target)
       if(entry.isIntersecting){
         entry.target.classList.add('anime-i')
         observer.unobserve(entry.target)
@@ -101,6 +101,24 @@ const Observer = () => {
   const observer = new IntersectionObserver(callback, options)
   observer.observe(target)
 }
+const MultiOvsever = () => {
+  const targets = document.querySelectorAll('#multi-target')
+  // console.log(targets)
+  const callback = (entries, observer) => {
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('anime-m-o')
+        observer.unobserve(entry.target)
+      }else{
+        return
+      }
+    })
+  }
+  const observer = new IntersectionObserver(callback)
+  targets.forEach(target=>{
+    observer.observe(target)
+  })
+}
 const Todos = () => {
   const todosUl = document.getElementById('todos-ul')
   const todoButton = document.getElementById('todo-button')
@@ -109,16 +127,22 @@ const Todos = () => {
     todosUl.removeChild(li)
   }
   const addTodo = (todo) => {
-    const li = document.createElement('li')
-    li.textContent = String(todo)
-    const button = document.createElement('button')
-    button.textContent = '削除'
-    button.addEventListener('click', () => {
-      removeTodo(li)
-    })
-    li.appendChild(button)
-    todosUl.appendChild(li)
+    if(todo===''){
+      alert('空です')
+      return
+    }else{
+      const li = document.createElement('li')
+      li.textContent = String(todo)
+      const button = document.createElement('button')
+      button.textContent = '削除'
+      button.addEventListener('click', () => {
+        removeTodo(li)
+      })
+      li.appendChild(button)
+      todosUl.appendChild(li)
+    }
   }
+
   todoButton.addEventListener('click', () => {
     const todo = todoInput.value
     addTodo(todo)
@@ -131,3 +155,4 @@ StopWatch()
 getApi()
 Observer()
 Todos()
+MultiOvsever()
