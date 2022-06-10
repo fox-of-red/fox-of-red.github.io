@@ -3,6 +3,7 @@ import { User } from "./User"
 export const Login = () => {
   let errorText
   const [userCompo, setUserCompo] = useState()
+  const [isLogined, setIsLogined] = useState(false)
   const DUMMY_USERS = [
     {id: 'sample_id_1', password: '11111111', username: 'guest'},
     {id: 'sample_id_2', password: '22222222', username: 'guest2'},
@@ -25,6 +26,7 @@ export const Login = () => {
         if(passwordInput === userInfo.password) {
           setUserCompo(<User id={userInfo.id} password={userInfo.password} username={userInfo.username}/>)
           setShowUser(true)
+          setIsLogined(true)
           // console.log(showUser)
         }else{
           errorText = (<p>パスワードエラー</p>)
@@ -43,9 +45,16 @@ export const Login = () => {
   const onChangePasswordInput = (e) => {
     setPasswordInput(e.target.value)
   } 
+  const onClickLogoutHandler = () => {
+    setIsLogined(false)
+    setShowUser(false)
+    setPasswordInput('')
+    setIdInput('')
+    setIsError(false)
+  }
   return(
     <>
-    <p>'id: sample1, password: 11111111'</p>
+    {!isLogined && <><p>'id: sample1, password: 11111111'</p>
     <p>'id: sample2, password: 22222222'</p>
     <p>'id: sample3, password: 33333333'</p>
     <p>でログインできます</p>
@@ -58,10 +67,12 @@ export const Login = () => {
         <input type="password" placeholder='パスワードを入力' value={passwordInput} onChange={onChangePasswordInput}/>
         <input type="submit" />
       </form>
-    </div>
+    </div></>}
+    {isLogined && <>
+    <div  style={{width: '200px', margin: 'auto auto', background: 'skyblue', textAlign: 'center', padding: '25px', borderRadius: '20px', border: '1px solid black'}}>
+      <button onClick={onClickLogoutHandler}>log out</button>
+      </div></>}
     {showUser && userCompo}
-    {console.log(showUser)}
-    {console.log(userCompo)}
     </>
   )
 }
