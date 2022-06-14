@@ -265,3 +265,10 @@ footer {
   border-radius: 50px;
 }
 
+.before {
+  opacity: 0;
+  transform: translateY(200px);
+}
+a:hover {
+  opacity: .5;
+}
