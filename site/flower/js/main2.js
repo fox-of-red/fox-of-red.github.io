@@ -1,6 +1,6 @@
 const imgs = document.querySelectorAll('.img')
 const contents = [
-  {name: 'シクラメン', description: 'これはシクラメンです'},
+  {name: 'シクラメン', description: 'これはメンです'},
   {name: 'たんぽぽ', description: 'これはたんぽぽです'},
   {name: 'かすみ草', description: 'これはかすみ草です'},
   {name: 'ひまわり', description: 'これはひまわりです'},
@@ -54,3 +54,36 @@ imgs.forEach((img, index) =>{
     overlay.appendChild(modal)
     root.appendChild(overlay)
   })})
+
+  const imgM1 = document.getElementById('img-m1')
+  // console.log(imgM1)
+  const imgM2 = document.getElementById('img-m2')
+  // console.log(imgM2)
+  const imgAll = document.querySelectorAll('.img')
+  // console.log(imgAll)
+  const newImgAll = [imgM1, imgM2, ...imgAll]
+
+  newImgAll.forEach(img=>{
+    img.style.transition = '.3s'
+    img.classList.add('before')
+  })
+  const callback = (entries, observer) => {
+    entries.forEach(entry=> {
+      if(entry.isIntersecting){
+        entry.target.classList.remove('before')
+        observer.unobserve(entry.target)
+      }
+    })
+  }
+  const options = {
+    threshold: .8
+  }
+
+  const  observer = new IntersectionObserver(callback, options)
+
+  newImgAll.forEach(newImg=>{
+    observer.observe(newImg)
+  })
+
+  
+  
