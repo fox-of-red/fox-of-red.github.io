@@ -1,0 +1,131 @@
+html {
+  font-size: 100%;
+}
+body {
+  font-family: 'Philosopher';
+  color: #432;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #0bd;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+  border-radius: 10px;
+}
+h2,p {
+  margin: 0;
+}
+
+
+
+
+
+#mainvisial {
+  width: 85vw;
+  /* height: 60vh;
+  background-image: url(../img/mainvisual.jpg);
+  background-size: cover;
+  background-position: center center; */
+  object-fit: cover;
+  object-position: center center;
+  margin: 30px auto;
+}
+.wrapper {
+  width: 70vw;
+  margin: 0 auto;
+}
+header {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px auto 40px 40px;
+}
+h1 {
+  font-size: 1.45rem;
+}
+header ul {
+  display: flex;
+}
+header ul li+li {
+  margin-left: 10px;
+}
+main section {
+  display: flex;
+  justify-content: space-between;
+  transition: all .3s;
+}
+main section:nth-child(1).animate {
+  opacity: 0;
+  transform: translateX(40px);
+}
+main section:nth-child(2).animate {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+main section:nth-child(1).animate.appear {
+  opacity: 1;
+  transform: none;
+}
+main section:nth-child(2).animate.appear {
+  opacity: 1;
+  transform: none;
+}
+main section+section {
+  margin-top: 80px;
+}
+main section:nth-child(2) {
+  flex-direction: row-reverse;
+}
+.text {
+  width: 50%;
+}
+.pic {
+  width: 45%;
+}
+main h3 {
+  margin:10px auto 5px 10px;
+  font-size: 1.125rem;
+}
+footer {
+  margin: 40px 0;
+  width: 90%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+footer h1 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+@media (max-width:600px) {
+  body {
+    margin: 0;
+  }
+  #mainvisial {
+    width: 100vw;
+    margin: 0;
+    background-position: center center;
+    background-size: cover;
+  }
+  main section {
+    flex-direction: column;
+  }
+  main section:nth-child(2) {
+    flex-direction: column;
+  }
+  .pic,
+  .text {
+    width: 100%;
+  }
+  
+}
