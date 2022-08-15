@@ -1,5 +1,4 @@
-'use strict';
- {
+'use strict'
    function callback(entries, obs){
      entries.forEach(entry => {
        if(entry.isIntersecting === true) {
@@ -16,4 +15,3 @@
      observer.observe(el);
      
    })
- }
